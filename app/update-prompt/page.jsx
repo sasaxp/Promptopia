@@ -68,16 +68,16 @@
 
 'use client';
 
-import { useEffect, useState, Suspense } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Form from '@components/Form';
 
-// Disable static generation
+// Ensure dynamic rendering to avoid pre-rendering errors
 export const dynamic = 'force-dynamic';
 
 const EditPrompt = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams(); // Hook is within Suspense
   const promptId = searchParams.get('id');
 
   const [submitting, setSubmitting] = useState(false);
@@ -126,7 +126,7 @@ const EditPrompt = () => {
   };
 
   return (
-    <Suspense fallback={<div>Loading prompt...</div>}>
+    <Suspense fallback={<div>Loading prompt data...</div>}>
       <Form
         type="Edit"
         post={post}
@@ -139,4 +139,3 @@ const EditPrompt = () => {
 };
 
 export default EditPrompt;
-
