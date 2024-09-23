@@ -3,16 +3,23 @@ const nextConfig = {
     images: { 
         remotePatterns: [
              { 
-                protocol: "https", hostname: "lh3.googleusercontent.com", pathname: "**", 
+                protocol: "https", 
+                hostname: "lh3.googleusercontent.com", 
+                pathname: "**", 
             }, 
         ], 
     }, 
+    // Add output option to disable static export
+    output: 'standalone', 
+    
     webpack(config) { 
-        config.experiments = {
-             ...config.experiments, topLevelAwait: true, 
-            }; 
-            return config; 
-        }, 
+        config.experiments = { 
+            ...config.experiments, 
+            topLevelAwait: true, 
+        }; 
+        return config; 
+    }, 
 };
 
-export default nextConfig
+export default nextConfig;
+
