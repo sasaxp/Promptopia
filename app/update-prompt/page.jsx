@@ -72,6 +72,9 @@ import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Form from '@components/Form';
 
+// Disable static generation
+export const dynamic = 'force-dynamic';
+
 const EditPrompt = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -123,7 +126,7 @@ const EditPrompt = () => {
   };
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div>Loading prompt...</div>}>
       <Form
         type="Edit"
         post={post}
@@ -136,3 +139,4 @@ const EditPrompt = () => {
 };
 
 export default EditPrompt;
+
